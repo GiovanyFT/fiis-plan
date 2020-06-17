@@ -54,7 +54,7 @@ class ControleTelaMapaUsuarios{
   Future<BitmapDescriptor> obterBitmapDescriptor(String foto) async {
     if (foto == null) {
       return await GeradorBitmapDescriptor.gerarBitMapDescriptorFromAsset(
-          'assets/icon/camera.png', 100);
+          'assets/icon/imagem_mapa.png', 100);
     } else {
       File file = await GerenciadoraArquivo.obterImagem(foto);
       return await GeradorBitmapDescriptor.gerarBitMapDescriptorFromFile(
