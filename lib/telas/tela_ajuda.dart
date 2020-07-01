@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:native_video_view/native_video_view.dart';
 
@@ -29,10 +31,18 @@ class _TelaAjudaState extends State<TelaAjuda> {
           keepAspectRatio: true,
           showMediaController: true,
           onCreated: (controller) {
-            controller.setVideoSource(
-              'assets/video/apresentando_aplicativo.mp4',
-              sourceType: VideoSourceType.asset,
-            );
+            if(Platform.isAndroid){
+              controller.setVideoSource(
+                'assets/video/apresentando_aplicativo_android.mp4',
+                sourceType: VideoSourceType.asset,
+              );
+            } else {
+              controller.setVideoSource(
+                'assets/video/apresentando_aplicativo_ios.mp4',
+                sourceType: VideoSourceType.asset,
+              );
+            }
+
           },
           onPrepared: (controller, info) {
             controller.play();
