@@ -2,14 +2,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:fundosimobiliarios/util/formatacao.dart';
 
-
-
 class GraficoPizza extends StatefulWidget {
   List<String> labels;
   List<double> valores;
   String titulo;
   int qt_indicator_linha;
-
 
   GraficoPizza(this.labels, this.valores, this.titulo, this.qt_indicator_linha);
 
@@ -113,8 +110,15 @@ class _GraficoPizzaState extends State<GraficoPizza> {
     );
   }
 
+  double _obterAspectRatio(){
+    double aspectRatio = MediaQuery.of(context).size.aspectRatio * 1.2;
+    return aspectRatio;
+  }
+
   @override
   Widget build(BuildContext context) {
+    double aspectRatio = _obterAspectRatio();
+
     if(widget.valores.length > 16){
       return Center(
         child: Text(
@@ -129,7 +133,7 @@ class _GraficoPizzaState extends State<GraficoPizza> {
     }
     valor_total = _calcularValorTotal();
     return AspectRatio(
-      aspectRatio: 0.6,
+      aspectRatio: aspectRatio,
       child: Card(
         color: Colors.white,
         child: Column(
