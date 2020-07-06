@@ -18,7 +18,6 @@ class DatabaseHelper {
       return _db;
     }
     _db = await _initDb();
-
     return _db;
   }
 
@@ -69,7 +68,6 @@ class DatabaseHelper {
               'VALUES("Administrador", "Administrador", "admin", "admin", null, "Rua Pedro Epichin, 351, Colatina Velha, Colatina, ES")');
       print('inserted1: $id3');
     });
-
   }
 
   Future<FutureOr<void>> _onUpgrade(Database db, int oldVersion, int newVersion) async {
