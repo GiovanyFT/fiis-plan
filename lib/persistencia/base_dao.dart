@@ -7,7 +7,7 @@ abstract class BaseDAO<T>{
   // Vai criar um get abstrato, ou seja, irá forçar os descendentes a atribuí-lo
   String get nomeTabela;
 
-  // Obriga a definir um fromJson para o objeto específico
+  // Obriga a definir um fromMap para o objeto específico
   T fromMap(Map<String, dynamic> map);
 
   Future<Database> get db => DatabaseHelper.getInstance().db;
