@@ -17,8 +17,4 @@ class CompraDAO extends TransacaoDAO<Compra>{
     // TODO: implement fromJson
     return Compra.fromMap(map);
   }
-
-
-
-
 }

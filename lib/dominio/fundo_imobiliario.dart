@@ -19,14 +19,12 @@ class SegmentoFundoImobiliario{
   recebiveis, shopping, outros, nd];
 }
 
-
 class FundoImobiliario extends Objeto{
   String sigla;
   String nome;
   String segmento;
 
   FundoImobiliario({this.sigla, this.nome, this.segmento});
-
 
   @override
   String toString() {
@@ -38,6 +36,5 @@ class FundoImobiliario extends Objeto{
     nome = map["nome"];
     segmento = map["segmento"];
   }
-
-
 }
+

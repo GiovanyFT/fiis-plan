@@ -1,11 +1,7 @@
-
-
 import 'package:fundosimobiliarios/dominio/patrimonio.dart';
 import 'package:fundosimobiliarios/dominio/usuario.dart';
 import 'package:fundosimobiliarios/persistencia/base_dao.dart';
 import 'package:sqflite/sqflite.dart';
-
-
 
 class PatrimonioDAO extends BaseDAO<Patrimonio>{
   @override
