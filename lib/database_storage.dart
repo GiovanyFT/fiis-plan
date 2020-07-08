@@ -10,7 +10,7 @@ class DataBaseStorage {
     await for (FileSystemEntity entity
         in dir.list(recursive: false, followLinks: false)) {
       FileSystemEntityType type = await FileSystemEntity.type(entity.path);
-      if (type == FileSystemEntityType.FILE) {
+      if (type == FileSystemEntityType.file) {
         files.add(entity);
         print(entity.path);
       }
@@ -55,39 +55,33 @@ class DataBaseStorage {
     }
   }
 
-  static void buscarBDDoStorage(String nome_arquivo)  {
+  static void buscarBDDoStorage(String nome_arquivo) {
     String arquivo_db = "/$nome_arquivo/$nome_arquivo.db";
-    print("Arquivo db $arquivo_db");
     StorageReference ref = FirebaseStorage.instance.ref().child(arquivo_db);
-    ref.writeToFile(
+    StorageFileDownloadTask task1 = ref.writeToFile(
         File("/data/data/com.fundos.fundosimobiliarios/databases/fundos.db"));
 
     ref = FirebaseStorage.instance.ref().child(arquivo_db + "-shm");
-    ref.writeToFile(File(
+    StorageFileDownloadTask task2 = ref.writeToFile(File(
         "/data/data/com.fundos.fundosimobiliarios/databases/fundos.db-shm"));
 
     ref = FirebaseStorage.instance.ref().child(arquivo_db + "-wal");
-    ref.writeToFile(File(
+    StorageFileDownloadTask task3 = ref.writeToFile(File(
         "/data/data/com.fundos.fundosimobiliarios/databases/fundos.db-wal"));
 
-    // Dando um tempo para exibição da tela de abertura
-    Future futureB = Future.delayed(Duration(seconds: 3));
-     futureB.then((value){
-       Future<List<Usuario>> future = FabricaControladora.obterUsuarioControl().obterUsuarios();
-       future.then((usuarios) {
-         for(Usuario usuario in usuarios){
-           print("Usuário: $usuario");
-           if(usuario.urlFoto != null){
-             String caminho_foto = "/$nome_arquivo/imagens/${usuario.urlFoto.substring(55)}";
-             print("CAMINHO ==> $caminho_foto");
-             ref = FirebaseStorage.instance.ref().child(caminho_foto);
-             print("URL FOTO => ${usuario.urlFoto}");
-             ref.writeToFile(File(usuario.urlFoto));
-           }
-         }
-       });
-
-     });
-
+    Future.wait([task1.future, task2.future, task3.future]).then((value) {
+      Future<List<Usuario>> future = FabricaControladora.obterUsuarioControl()
+          .obterUsuarios();
+      future.then((usuarios) {
+        for (Usuario usuario in usuarios) {
+          if (usuario.urlFoto != null) {
+            String caminho_foto = "/$nome_arquivo/imagens/${usuario.urlFoto
+                .substring(55)}";
+            ref = FirebaseStorage.instance.ref().child(caminho_foto);
+            ref.writeToFile(File(usuario.urlFoto));
+          }
+        };
+      });
+    });
   }
 }
