@@ -31,8 +31,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     _controle = ControleTelaPrincipal(widget.usuario);
     _controle.buscarPatrimonios();
 
-    TratadorNotificacao.initFcm(context);
-
+    TratadorNotificacao.inicializarFCM(context);
   }
 
   @override

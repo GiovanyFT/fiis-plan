@@ -8,20 +8,12 @@ FirebaseMessaging fcm;
 class TratadorNotificacao{
   static BuildContext _context;
 
-
-
-  static void initFcm(BuildContext context) {
+  static void inicializarFCM(BuildContext context) {
     _context = context;
 
     if (fcm == null) {
       fcm = FirebaseMessaging();
     }
-
-    fcm.getToken().then((token) {
-  //    print("\n******\nFirebase Token $token\n******\n");
-    });
-
-    fcm.subscribeToTopic("all");
 
     fcm.configure(
       // Quando a aplicação está ativa
@@ -29,7 +21,7 @@ class TratadorNotificacao{
 
         // 'mensagem' deve ser chave um Dado Personalizado do item
         // Outras opções (opcional)
-        // També deve ser colocado o dado personalizado com chave
+        // Também deve ser colocado o dado personalizado com chave
         // 'click_action' com o valor 'FLUTTER_NOTIFICATION_CLICK'
         _showDialog(message['data']['mensagem']);
       },
