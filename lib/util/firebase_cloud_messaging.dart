@@ -1,21 +1,20 @@
 import 'dart:io';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fundosimobiliarios/util/nav.dart';
-
-FirebaseMessaging fcm;
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class TratadorNotificacao{
   static BuildContext _context;
+  static FirebaseMessaging _fcm;
 
   static void inicializarFCM(BuildContext context) {
     _context = context;
 
-    if (fcm == null) {
-      fcm = FirebaseMessaging();
+    if (_fcm == null) {
+      _fcm = FirebaseMessaging();
     }
 
-    fcm.configure(
+    _fcm.configure(
       // Quando a aplicação está ativa
       onMessage: (Map<String, dynamic> message) async {
 
@@ -27,18 +26,19 @@ class TratadorNotificacao{
       },
       // Quando a aplicação está voltando ao foco
       onResume: (Map<String, dynamic> message) async {
-  //      _showDialog(message['data']['mensagem']);
+      //  _showDialog(message['data']['mensagem']);
       },
-      // Quando a aplicação está sendo recarregada (havia saído pelo botão voltar)
+      // Quando a aplicação está sendo recarregada
+      // (havia saído pelo botão voltar)
       onLaunch: (Map<String, dynamic> message) async {
- //       _showDialog(message['data']['mensagem']);
+      //  _showDialog(message['data']['mensagem']);
       },
     );
 
     if (Platform.isIOS) {
-      fcm.requestNotificationPermissions(
+      _fcm.requestNotificationPermissions(
           IosNotificationSettings(sound: true, badge: true, alert: true));
-      fcm.onIosSettingsRegistered
+      _fcm.onIosSettingsRegistered
           .listen((IosNotificationSettings settings) {
         print("iOS Push Settings: [$settings]");
       });
