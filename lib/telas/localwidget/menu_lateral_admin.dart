@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fundosimobiliarios/dominio/usuario.dart';
-import 'package:fundosimobiliarios/telas/controle_interacao/controle_tela_administracao_usuario.dart';
 import 'package:fundosimobiliarios/telas/tela_ajuda.dart';
-import 'package:fundosimobiliarios/telas/tela_edicao_usuario.dart';
 import 'package:fundosimobiliarios/telas/tela_login.dart';
 import 'package:fundosimobiliarios/database_storage.dart';
 import 'package:fundosimobiliarios/util/gerenciadora_arquivo.dart';
