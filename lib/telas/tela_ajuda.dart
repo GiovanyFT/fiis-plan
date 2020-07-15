@@ -1,23 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:native_video_view/native_video_view.dart';
 
-class TelaAjuda extends StatefulWidget {
-  @override
-  _TelaAjudaState createState() => _TelaAjudaState();
-}
-
-class _TelaAjudaState extends State<TelaAjuda> {
-
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-  }
-
+class TelaAjuda extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +27,6 @@ class _TelaAjudaState extends State<TelaAjuda> {
                 sourceType: VideoSourceType.asset,
               );
             }
-
           },
           onPrepared: (controller, info) {
             controller.play();
@@ -57,5 +41,4 @@ class _TelaAjudaState extends State<TelaAjuda> {
       ),
     );
   }
-
 }
