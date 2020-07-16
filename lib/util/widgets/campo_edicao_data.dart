@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fundosimobiliarios/util/formatacao.dart';
 import 'package:fundosimobiliarios/util/widgets/botao_icone.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class CampoEdicaoData extends StatefulWidget {
   String texto_label;
@@ -14,7 +13,6 @@ class CampoEdicaoData extends StatefulWidget {
   TextInputType teclado;
   FocusNode marcador_foco;
   FocusNode recebedor_foco;
-
 
   CampoEdicaoData(
       this.texto_label,
@@ -33,7 +31,6 @@ class CampoEdicaoData extends StatefulWidget {
         return null;
       };
     }
-
 
   @override
   _CampoEdicaoDataState createState() => _CampoEdicaoDataState();
