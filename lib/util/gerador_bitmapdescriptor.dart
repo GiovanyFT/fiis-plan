@@ -1,16 +1,11 @@
-
 import 'dart:io';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:ui' as ui;
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
-import 'dart:typed_data';
-
 
 class GeradorBitmapDescriptor{
-
 
   static Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
@@ -41,5 +36,4 @@ class GeradorBitmapDescriptor{
 
     return BitmapDescriptor.fromBytes(resizedMarkerImageBytes);
   }
-
 }
