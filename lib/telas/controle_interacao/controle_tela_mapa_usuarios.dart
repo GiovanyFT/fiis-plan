@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:flutter/material.dart';
-
 import 'package:fundosimobiliarios/dominio/usuario.dart';
 import 'package:fundosimobiliarios/util/gerador_bitmapdescriptor.dart';
 import 'package:fundosimobiliarios/util/gerenciadora_arquivo.dart';
@@ -18,8 +15,6 @@ class ControleTelaMapaUsuarios{
   int posicao_marker_atual = -1;
 
   ControleTelaMapaUsuarios(this.usuarios);
-
-
 
   inicializarPosicaoAtual(){
     if(posicao_marker_atual == -1 && markers.length > 0){
@@ -82,9 +77,6 @@ class ControleTelaMapaUsuarios{
         markers.add(marker);
       }
     }
-
     return markers;
   }
-
-
 }

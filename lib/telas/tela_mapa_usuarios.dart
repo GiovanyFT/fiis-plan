@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:fundosimobiliarios/dominio/usuario.dart';
 import 'package:fundosimobiliarios/telas/controle_interacao/controle_tela_mapa_usuarios.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -19,7 +16,7 @@ class TelaMapaUsuarios extends StatefulWidget {
 class _TelaMapaUsuariosState extends State<TelaMapaUsuarios> {
   ControleTelaMapaUsuarios _controle;
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
