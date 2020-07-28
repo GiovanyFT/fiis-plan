@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fundosimobiliarios/controle/fabrica_contoladora.dart';
 import 'package:fundosimobiliarios/dominio/usuario.dart';
 import 'package:fundosimobiliarios/telas/controle_interacao/controle_tela_administracao_usuario.dart';
 import 'package:fundosimobiliarios/telas/localwidget/card_usuario.dart';
 import 'package:fundosimobiliarios/telas/localwidget/menu_lateral_admin.dart';
-import 'package:fundosimobiliarios/telas/tela_edicao_usuario.dart';
 import 'package:fundosimobiliarios/telas/tela_mapa_usuarios.dart';
 import 'package:fundosimobiliarios/util/nav.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'localwidget/menu_lateral.dart';
 
 class TelaAdministracaoUsuario extends StatefulWidget {
 
