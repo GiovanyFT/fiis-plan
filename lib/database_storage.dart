@@ -28,7 +28,7 @@ class DataBaseStorage {
     String urlFile = await task.ref.getDownloadURL();
     print("urlFile1 => $urlFile");
 
-    bdRef = storageRef.child("/$nome_arquivo/$nome_arquivo.db-shm");
+/*    bdRef = storageRef.child("/$nome_arquivo/$nome_arquivo.db-shm");
     task = await bdRef
         .putFile(File(
             "/data/data/com.fundos.fundosimobiliarios/databases/fundos.db-shm"))
@@ -43,7 +43,7 @@ class DataBaseStorage {
         .onComplete;
     urlFile = await task.ref.getDownloadURL();
     print("urlFile3 => $urlFile");
-
+*/
     Directory diretorio =
         Directory("/data/data/com.fundos.fundosimobiliarios/app_flutter/");
     List<File> arquivos = await filesInDirectory(diretorio);
@@ -61,7 +61,7 @@ class DataBaseStorage {
     StorageFileDownloadTask task1 = ref.writeToFile(
         File("/data/data/com.fundos.fundosimobiliarios/databases/fundos.db"));
 
-    ref = FirebaseStorage.instance.ref().child(arquivo_db + "-shm");
+  /*  ref = FirebaseStorage.instance.ref().child(arquivo_db + "-shm");
     StorageFileDownloadTask task2 = ref.writeToFile(File(
         "/data/data/com.fundos.fundosimobiliarios/databases/fundos.db-shm"));
 
@@ -69,7 +69,8 @@ class DataBaseStorage {
     StorageFileDownloadTask task3 = ref.writeToFile(File(
         "/data/data/com.fundos.fundosimobiliarios/databases/fundos.db-wal"));
 
-    Future.wait([task1.future, task2.future, task3.future]).then((value) {
+    Future.wait([task1.future, task2.future, task3.future]).then((value) {*/
+    Future.wait([task1.future]).then((value) {
       Future<List<Usuario>> future = FabricaControladora.obterUsuarioControl()
           .obterUsuarios();
       future.then((usuarios) {
