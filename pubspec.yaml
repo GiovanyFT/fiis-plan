@@ -31,7 +31,7 @@ dependencies:
   # Gráficos
   fl_chart: ^0.9.3
   # String formatada
-  intl: 0.16.1
+  intl: 0.17.0
   # Foto e galeria
   image_picker: ^0.6.6+1
   # Diretórios do sistema

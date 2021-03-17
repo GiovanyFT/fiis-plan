@@ -17,7 +17,7 @@ class ImpostoControl{
     for (Patrimonio patrimonio in patrimonios) {
       List<Venda> vendas = await FabricaControladora.obterVendaControl()
           .obterVendas(patrimonio, texto_ano);
-      List<Venda> vendas_a_tributar = List<Venda>();
+      List<Venda> vendas_a_tributar = <Venda>[];
       for (Venda venda in vendas) {
         int mes = venda.data_transacao.month;
         String mes_string = MesesAno.meses[mes - 1];

@@ -11,7 +11,7 @@ class ControleCardImposto{
   String valor_compra_texto, valor_venda_texto, resultado;
 
   void gerarValoresItemVenda(Venda venda) {
-     double valor_compra = venda.patrimonio.valor_medio * venda.quantidade;
+     double valor_compra = venda.valor_medio_compra * venda.quantidade;
      double valor_venda = venda.valor_cota*venda.quantidade - venda.taxa;
      valor_compra_texto = formatarNumero(valor_compra);
      valor_venda_texto = formatarNumero(valor_venda);
@@ -23,7 +23,7 @@ class ControleCardImposto{
     List<Venda> vendas = imposto.vendas;
     for(Venda venda in vendas){
 
-      double valor_compra = venda.patrimonio.valor_medio * venda.quantidade;
+      double valor_compra = venda.valor_medio_compra * venda.quantidade;
       double valor_venda = venda.valor_cota*venda.quantidade  - venda.taxa;;
       total += valor_venda - valor_compra;
     }

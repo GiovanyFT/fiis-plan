@@ -13,7 +13,7 @@ class VendaControl{
 
   Future<List<Venda>> obterVendas(Patrimonio patrimonio, String texto_ano) async {
     List<Venda> vendas = await _dao.obterLista(patrimonio);
-    List<Venda> vendas_ano = List<Venda>();
+    List<Venda> vendas_ano = <Venda>[];
     for(Venda venda in vendas){
       int ano = venda.data_transacao.year;
       if(ano == int.parse(texto_ano)){

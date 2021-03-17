@@ -26,7 +26,7 @@ class DatabaseHelper {
     String path = join(databasesPath, 'fundos.db');
     print("Database path ==> $path");
 
-    var db = await openDatabase(path, version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    var db = await openDatabase(path, version: 2, onCreate: _onCreate, onUpgrade: _onUpgrade);
     return db;
   }
 
@@ -74,7 +74,7 @@ class DatabaseHelper {
     print("_onUpgrade: oldVersion: $oldVersion > newVersion: $newVersion");
 
     if(oldVersion == 1 && newVersion == 2) {
-      await db.execute("alter table USUARIO add column NOVA TEXT");
+      await db.execute("alter table VENDA add valor_medio_compra REAL");
     }
   }
 
