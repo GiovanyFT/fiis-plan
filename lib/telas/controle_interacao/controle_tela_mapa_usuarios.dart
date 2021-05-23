@@ -58,7 +58,7 @@ class ControleTelaMapaUsuarios{
   }
 
   Future<List<Marker>> obterMarkers(List<Usuario> usuarios) async {
-    List<Marker> markers = List<Marker>();
+    List<Marker> markers = <Marker>[];
     for (Usuario usuario in usuarios) {
       LatLng latLng =
       await Localizador.obterLatitudeLongitudePorEndereco(usuario.endereco);
