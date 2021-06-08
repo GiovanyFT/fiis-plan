@@ -3,6 +3,21 @@ import 'package:fundosimobiliarios/dominio/fundo_imobiliario.dart';
 import 'package:fundosimobiliarios/dominio/objeto.dart';
 import 'package:fundosimobiliarios/dominio/usuario.dart';
 
+Comparator<Patrimonio> patrimonioPorSiglaFundo = (p1, p2) => p1.fundo.sigla.compareTo(p2.fundo.sigla);
+Comparator<Patrimonio> patrimonioPorSiglaFundoDesc = (p1, p2) => p2.fundo.sigla.compareTo(p1.fundo.sigla);
+
+Comparator<Patrimonio> patrimonioPorNomeFundo = (p1, p2) => p1.fundo.nome.compareTo(p2.fundo.nome);
+Comparator<Patrimonio> patrimonioPorNomeFundoDesc = (p1, p2) => p2.fundo.nome.compareTo(p1.fundo.nome);
+
+Comparator<Patrimonio> patrimonioPorTipoFundo = (p1, p2) => p1.fundo.segmento.compareTo(p2.fundo.segmento);
+Comparator<Patrimonio> patrimonioPorTipoFundoDesc = (p1, p2) => p2.fundo.segmento.compareTo(p1.fundo.segmento);
+
+Comparator<Patrimonio> patrimonioPorValorMedioFundo = (p1, p2) => p1.valor_medio.compareTo(p2.valor_medio);
+Comparator<Patrimonio> patrimonioPorValorMedioFundoDesc = (p1, p2) => p2.valor_medio.compareTo(p1.valor_medio);
+
+Comparator<Patrimonio> patrimonioPorQtCotaFundo = (p1, p2) => p1.qt_cotas.compareTo(p2.qt_cotas);
+Comparator<Patrimonio> patrimonioPorQtCotaFundoDesc = (p1, p2) => p2.qt_cotas.compareTo(p1.qt_cotas);
+
 class Patrimonio extends Objeto{
   FundoImobiliario fundo;
   Usuario usuario;
