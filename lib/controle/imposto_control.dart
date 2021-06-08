@@ -10,7 +10,7 @@ class ImpostoControl{
 
 
   Future<List<Imposto>> gerarImpostos(String texto_ano, String texto_mes) async {
-    List<Imposto> impostos = List<Imposto>();
+    List<Imposto> impostos = <Imposto>[];
     Usuario usuario = await Usuario.obter();
     List<Patrimonio> patrimonios = await FabricaControladora
         .obterPatrimonioControl().obterPatrimonios(usuario);
