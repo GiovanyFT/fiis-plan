@@ -37,7 +37,7 @@ class VendaControl{
     double patrimonio_total_com_venda = patrimonio.qt_cotas * patrimonio.valor_medio;
     double valor_venda_removida = venda.valor_medio_compra * venda.quantidade;
 
-    patrimonio.valor_medio = patrimonio_total_com_venda + valor_venda_removida;
+    patrimonio.valor_medio = (patrimonio_total_com_venda + valor_venda_removida)/nova_quantidade_cotas;
 
     patrimonio.qt_cotas = nova_quantidade_cotas;
     _dao.excluir(venda);
