@@ -30,7 +30,7 @@ class DatabaseHelper {
     return db;
   }
 
-  void _onCreate(Database db, int newVersion) async {
+  void _onCreate(Database db, int version) async {
     await db.execute(
         'CREATE TABLE USUARIO (id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, nome	TEXT, tipo	TEXT,'
         'login TEXT, senha TEXT, endereco TEXT, urlFoto TEXT)');
@@ -68,12 +68,15 @@ class DatabaseHelper {
               'VALUES("Administrador", "Administrador", "admin", "admin", null, "Rua Pedro Epichin, 351, Colatina Velha, Colatina, ES")');
       print('inserted1: $id3');
     });
+
+    if(version >= 2){
+      await db.execute("alter table VENDA add valor_medio_compra REAL");
+    }
   }
 
   Future<FutureOr<void>> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    print("_onUpgrade: oldVersion: $oldVersion > newVersion: $newVersion");
 
-    if(oldVersion == 1 && newVersion == 2) {
+    if(newVersion < 2) {
       await db.execute("alter table VENDA add valor_medio_compra REAL");
     }
   }
