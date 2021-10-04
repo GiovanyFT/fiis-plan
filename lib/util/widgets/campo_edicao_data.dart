@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:fundosimobiliarios/util/formatacao.dart';
 import 'package:fundosimobiliarios/util/widgets/botao_icone.dart';
-import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
 class CampoEdicaoData extends StatefulWidget {
   String texto_label;
