@@ -42,7 +42,7 @@ class _GraficoPizzaState extends State<GraficoPizza> {
   String _valor;
 
   _gerarIndicators(int indice_inicial, int quantidade) {
-    List<Container> indicators = List<Container>();
+    List<Container> indicators = <Container>[];
     int indice_final = indice_inicial + quantidade;
     for (int i = indice_inicial; i < indice_final; i++) {
       Indicator indicator = Indicator(
@@ -80,7 +80,7 @@ class _GraficoPizzaState extends State<GraficoPizza> {
     int qt_itens = widget.labels.length;
     int qt_linhas = (qt_itens / widget.qt_indicator_linha).ceil();
     int qt_linhas_completas = (qt_itens / widget.qt_indicator_linha).floor();
-    List<Widget> linhas = List<Widget>();
+    List<Widget> linhas = <Widget>[];
     for (int i = 0; i < qt_linhas; i++) {
       int qt_labels;
       if (i < qt_linhas_completas)
@@ -88,7 +88,6 @@ class _GraficoPizzaState extends State<GraficoPizza> {
       else {
         qt_labels = qt_itens - qt_linhas_completas * widget.qt_indicator_linha;
       }
-      List<Container> indicators = _gerarIndicators(i * widget.qt_indicator_linha, qt_labels);
       Row linha = Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
@@ -159,21 +158,20 @@ class _GraficoPizzaState extends State<GraficoPizza> {
                 child: PieChart(
                   PieChartData(
                       pieTouchData: PieTouchData(
-                          touchCallback: (pieTouchResponse) {
-                            setState(() {
-                              if (pieTouchResponse
-                                  .touchInput is FlLongPressEnd ||
-                                  pieTouchResponse.touchInput is FlPanEnd) {
-                                touchedIndex = -1;
-                                 _item = "";
-                                _porcentagem ="";
-                                _valor = "";
-                              } else {
-                                touchedIndex =
-                                    pieTouchResponse.touchedSectionIndex;
-                                _atualizarCaixaTexto();
-                              }
-                            });
+                          touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                              setState(() {
+                                  if (!event.isInterestedForInteractions ||
+                                      pieTouchResponse == null ||
+                                      pieTouchResponse.touchedSection == null) {
+                                    touchedIndex = -1;
+                                    _item = "";
+                                    _porcentagem = "";
+                                    _valor = "";
+                                  }else {
+                                    touchedIndex = pieTouchResponse.touchedSection.touchedSectionIndex;
+                                    _atualizarCaixaTexto();
+                                  }
+                              });
                           }),
                       startDegreeOffset: 180,
                       borderData: FlBorderData(
